@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,41 +6,96 @@
 <title>Aryaman Sharma | Developer</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;scroll-behavior:smooth}
-body{font-family:Arial,sans-serif;background:#080d19;color:white}
-header{padding:20px 8%;background:#0c1425;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0}
-.logo{color:#38bdf8;font-size:24px;font-weight:bold}
-nav a{color:white;text-decoration:none;margin-left:18px}
+body{font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;background:#080d19;color:white;overflow-x:hidden}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+@keyframes pulseGlow {
+  0%, 100% { opacity: 0.3; transform: translate(-50%, -50%) scale(1); }
+  50% { opacity: 0.6; transform: translate(-50%, -50%) scale(1.1); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade {
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+header{padding:20px 8%;background:rgba(12, 20, 37, 0.85);backdrop-filter: blur(10px);display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:1000;border-bottom:1px solid rgba(56, 189, 248, 0.1)}
+.logo{color:#38bdf8;font-size:24px;font-weight:bold;letter-spacing:1px;transition:.3s}
+.logo:hover{text-shadow:0 0 10px rgba(56,189,248,0.6)}
+nav{display:flex;gap:20px;align-items:center}
+nav a{color:#cbd5e1;text-decoration:none;font-weight:500;transition:.3s;position:relative}
+nav a::after{content:'';position:absolute;width:0;height:2px;bottom:-4px;left:0;background:#38bdf8;transition:width 0.3s}
 nav a:hover{color:#38bdf8}
-.hero{text-align:center;padding:110px 20px;background:radial-gradient(circle,#142b48,#080d19)}
-.hero h1{font-size:clamp(35px,6vw,60px);margin-bottom:15px}
+nav a:hover::after{width:100%}
+.menu-toggle{display:none;cursor:pointer;font-size:24px;color:#38bdf8}
+
+.hero{text-align:center;padding:140px 20px 120px;background:radial-gradient(circle at center, #142b48 0%, #080d19 70%);position:relative;overflow:hidden}
+.hero::after{content:'';position:absolute;width:350px;height:350px;background:rgba(56,189,248,0.12);filter:blur(90px);top:50%;left:50%;transform:translate(-50%, -50%);z-index:0;animation: pulseGlow 6s infinite ease-in-out}
+.hero > * {position:relative;z-index:1}
+.hero h1{font-size:clamp(35px,6vw,60px);margin-bottom:15px;letter-spacing:-1px}
 span{color:#38bdf8}
-.hero p{color:#b5c5d8;margin:12px}
-.btn{display:inline-block;background:#38bdf8;color:#07111f;padding:12px 22px;border-radius:8px;text-decoration:none;font-weight:bold;margin:15px 5px}
-section{padding:65px 8%}
-h2{text-align:center;font-size:32px;margin-bottom:35px}
-.about{text-align:center;color:#cbd5e1;line-height:1.8;max-width:750px;margin:auto}
-.skills{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:25px}
-.skill,.tag{background:#102e46;color:#38bdf8;padding:9px 15px;border-radius:20px;font-size:13px}
-.projects{background:#0c1425}
-.subtitle{text-align:center;color:#94a3b8;margin:-15px 0 35px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:22px}
-.card{background:#142238;border:1px solid #263e5c;padding:25px;border-radius:12px;transition:.3s;display:flex;flex-direction:column}
-.card:hover{transform:translateY(-7px);border-color:#38bdf8}
-.card h3{color:#38bdf8;margin:12px 0}
-.card p{color:#b5c5d8;line-height:1.6;margin-top:12px;flex:1}
-.card a{color:#38bdf8;text-decoration:none;margin-top:20px;font-weight:bold}
-.icon{font-size:35px}
+.hero p{color:#b5c5d8;margin:12px;font-size:18px;min-height:28px}
+.typed-text{color:#38bdf8;font-weight:600;border-right:2px solid #38bdf8;padding-right:3px;animation: blink 0.75s step-end infinite}
+
+@keyframes blink {
+  from, to { border-color: transparent }
+  50% { border-color: #38bdf8; }
+}
+
+.btn-group{margin-top:30px}
+.btn{display:inline-block;background:#38bdf8;color:#07111f;padding:13px 28px;border-radius:10px;text-decoration:none;font-weight:bold;margin:8px;transition:all 0.3s ease;box-shadow:0 4px 20px rgba(56, 189, 248, 0.3)}
+.btn:hover{transform:translateY(-4px);box-shadow:0 8px 25px rgba(56, 189, 248, 0.5);background:#7dd3fc}
+.btn-outline{background:transparent;color:#38bdf8;border:2px solid #38bdf8;box-shadow:none}
+.btn-outline:hover{background:rgba(56,189,248,0.15);color:#38bdf8}
+
+section{padding:90px 8%}
+h2{text-align:center;font-size:38px;margin-bottom:15px;letter-spacing:-0.5px}
+.subtitle{text-align:center;color:#94a3b8;margin-bottom:45px;font-size:16px}
+.about{text-align:center;color:#cbd5e1;line-height:1.9;max-width:750px;margin:auto;font-size:17px}
+.skills{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:30px}
+.skill,.tag{background:rgba(16, 46, 70, 0.6);border:1px solid rgba(56,189,248,0.2);color:#38bdf8;padding:10px 18px;border-radius:30px;font-size:14px;font-weight:500;transition:all 0.3s ease}
+.skill:hover{background:rgba(56,189,248,0.2);transform:translateY(-4px);box-shadow:0 5px 15px rgba(56,189,248,0.2)}
+
+.projects{background:linear-gradient(to bottom, #080d19, #0c1425)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:25px}
+.card{background:rgba(20, 34, 56, 0.7);backdrop-filter: blur(8px);border:1px solid rgba(38, 62, 92, 0.8);padding:30px;border-radius:16px;transition:all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);display:flex;flex-direction:column;position:relative;overflow:hidden}
+.card::before{content:'';position:absolute;top:0;left:0;width:100%;height:3px;background:linear-gradient(90deg, transparent, #38bdf8, transparent);opacity:0;transition:opacity 0.3s}
+.card:hover{transform:translateY(-10px);border-color:#38bdf8;box-shadow:0 15px 35px rgba(56, 189, 248, 0.2)}
+.card:hover::before{opacity:1}
+.card h3{color:#38bdf8;margin:15px 0 10px;font-size:22px}
+.card p{color:#b5c5d8;line-height:1.7;margin-bottom:20px;flex:1;font-size:15px}
+.card a{color:#38bdf8;text-decoration:none;font-weight:bold;display:inline-flex;align-items:center;gap:5px;transition:.3s}
+.card a:hover{gap:10px;color:#7dd3fc}
+.icon{font-size:42px;animation: float 4s ease-in-out infinite}
+
 .contact{text-align:center}
-.contact p{color:#b5c5d8;margin:15px}
-footer{text-align:center;padding:22px;background:#0c1425;color:#94a3b8}
-@media(max-width:600px){header{flex-direction:column;gap:15px}nav a{margin:0 7px;font-size:14px}}
+.contact p{color:#b5c5d8;margin:15px 0 25px;font-size:18px}
+footer{text-align:center;padding:25px;background:#060a13;color:#64748b;font-size:14px;border-top:1px solid rgba(255,255,255,0.05)}
+
+#scrollTop{position:fixed;bottom:25px;right:25px;background:#38bdf8;color:#07111f;width:45px;height:45px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:bold;text-decoration:none;opacity:0;pointer-events:none;transition:all 0.3s ease;z-index:999;box-shadow:0 4px 15px rgba(56,189,248,0.4)}
+#scrollTop.show{opacity:1;pointer-events:auto}
+#scrollTop:hover{transform:translateY(-5px) scale(1.1);background:#7dd3fc}
+
+@media(max-width:768px){
+  nav{position:absolute;top:73px;left:0;width:100%;background:rgba(12,20,37,0.98);backdrop-filter: blur(10px);flex-direction:column;padding:20px 0;border-bottom:1px solid rgba(56, 189, 248, 0.1);clip-path:circle(0% at top right);transition:all 0.4s ease-in-out}
+  nav.active{clip-path:circle(150% at top right)}
+  nav a{margin:12px 0;font-size:16px}
+  .menu-toggle{display:block}
+}
 </style>
 </head>
 <body>
 
 <header>
 <div class="logo">Aryaman.dev</div>
-<nav>
+<div class="menu-toggle" id="mobile-menu">☰</div>
+<nav id="nav-menu">
 <a href="#home">Home</a>
 <a href="#about">About</a>
 <a href="#projects">Projects</a>
@@ -49,18 +103,20 @@ footer{text-align:center;padding:22px;background:#0c1425;color:#94a3b8}
 </nav>
 </header>
 
-<section class="hero" id="home">
+<section class="hero animate-fade" id="home">
 <h1>Hey, I'm <span>Aryaman Sharma</span></h1>
-<p>14-Year-Old Python & HTML Developer 💻</p>
+<p>I am a <span class="typed-text" id="typed"></span>💻</p>
 <p>Building creative projects and turning ideas into reality.</p>
+<div class="btn-group">
 <a class="btn" href="#projects">Explore Projects</a>
-<a class="btn" href="https://github.com/AryamanSharmaTheKing" target="_blank">My GitHub</a>
+<a class="btn btn-outline" href="https://github.com/AryamanSharmaTheKing" target="_blank">My GitHub</a>
+</div>
 </section>
 
 <section id="about">
 <h2>About <span>Me</span></h2>
 <div class="about">
-Hi! I'm Aryaman Sharma, a young developer passionate about programming and technology. I build desktop applications, websites, games and useful tools using Python and HTML. I'm always learning and creating something new!
+Hi! I'm Aryaman Sharma, a young developer passionate about programming and technology. I build desktop applications, websites, games, and useful tools using Python and HTML. I'm always learning and creating something new!
 <div class="skills">
 <div class="skill">🐍 Python</div>
 <div class="skill">🌐 HTML</div>
@@ -82,7 +138,7 @@ Hi! I'm Aryaman Sharma, a young developer passionate about programming and techn
 <h3>GeoSense</h3>
 <div class="tag">Python · Tkinter</div>
 <p>Geology tool that classifies minerals and rocks using hardness, density, luster, streak and grain size.</p>
-<a href="https://github.com/AryamanSharmaTheKing/GeoSense" target="_blank">View Repository →</a>
+<a href="https://github.com/AryamanSharmaTheKing/GeoSense" target="_blank">View Repository &rarr;</a>
 </div>
 
 <div class="card">
@@ -90,7 +146,7 @@ Hi! I'm Aryaman Sharma, a young developer passionate about programming and techn
 <h3>VisionID</h3>
 <div class="tag">Python · OpenCV</div>
 <p>Face recognition application with webcam support, Tkinter GUI and voice feedback.</p>
-<a href="https://github.com/AryamanSharmaTheKing/VisionID" target="_blank">View Repository →</a>
+<a href="https://github.com/AryamanSharmaTheKing/VisionID" target="_blank">View Repository &rarr;</a>
 </div>
 
 <div class="card">
@@ -98,7 +154,7 @@ Hi! I'm Aryaman Sharma, a young developer passionate about programming and techn
 <h3>EchoDesk</h3>
 <div class="tag">Python · pyttsx3</div>
 <p>Text-to-speech desktop application that converts written text into spoken words.</p>
-<a href="https://github.com/AryamanSharmaTheKing/EchoDesk" target="_blank">View Repository →</a>
+<a href="https://github.com/AryamanSharmaTheKing/EchoDesk" target="_blank">View Repository &rarr;</a>
 </div>
 
 <div class="card">
@@ -106,7 +162,7 @@ Hi! I'm Aryaman Sharma, a young developer passionate about programming and techn
 <h3>PocketVault Pro</h3>
 <div class="tag">Python · Tkinter · JSON</div>
 <p>Desktop banking application with password authentication and JSON data management.</p>
-<a href="https://github.com/AryamanSharmaTheKing/PocketVault-Pro" target="_blank">View Repository →</a>
+<a href="https://github.com/AryamanSharmaTheKing/PocketVault-Pro" target="_blank">View Repository &rarr;</a>
 </div>
 
 <div class="card">
@@ -114,7 +170,7 @@ Hi! I'm Aryaman Sharma, a young developer passionate about programming and techn
 <h3>Cows and Bulls</h3>
 <div class="tag">Python · Game</div>
 <p>Classic number guessing game where you crack a secret four-digit code using Bulls and Cows clues.</p>
-<a href="https://github.com/AryamanSharmaTheKing/Cows-and-Bulls" target="_blank">View Repository →</a>
+<a href="https://github.com/AryamanSharmaTheKing/Cows-and-Bulls" target="_blank">View Repository &rarr;</a>
 </div>
 
 <div class="card">
@@ -122,7 +178,7 @@ Hi! I'm Aryaman Sharma, a young developer passionate about programming and techn
 <h3>More Coming Soon</h3>
 <div class="tag">Always Building</div>
 <p>More exciting projects are on the way. Stay tuned!</p>
-<a href="https://github.com/AryamanSharmaTheKing" target="_blank">Explore GitHub →</a>
+<a href="https://github.com/AryamanSharmaTheKing" target="_blank">Explore GitHub &rarr;</a>
 </div>
 
 </div>
@@ -130,11 +186,77 @@ Hi! I'm Aryaman Sharma, a young developer passionate about programming and techn
 
 <section class="contact" id="contact">
 <h2>Let's <span>Connect</span></h2>
-<p>Want to explore my work? Visit my GitHub profile!</p>
+<p>Want to explore my work or collaborate? Visit my GitHub profile!</p>
 <a class="btn" href="https://github.com/AryamanSharmaTheKing" target="_blank">🐙 Visit My GitHub</a>
 </section>
 
-<footer>© 2026 Aryaman Sharma |  JustCode!</footer>
+<footer>© 2026 Aryaman Sharma | JustCode!</footer>
+
+<a href="#home" id="scrollTop">↑</a>
+
+<script>
+const mobileMenu = document.getElementById('mobile-menu');
+const navMenu = document.getElementById('nav-menu');
+
+mobileMenu.addEventListener('click', () => {
+  navMenu.classList.toggle('active');
+});
+
+document.querySelectorAll('nav a').forEach(link => {
+  link.addEventListener('click', () => {
+    navMenu.classList.remove('active');
+  });
+});
+
+const scrollTopBtn = document.getElementById('scrollTop');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 300) {
+    scrollTopBtn.classList.add('show');
+  } else {
+    scrollTopBtn.classList.remove('show');
+  }
+});
+
+const words = ["Python Developer", "HTML Enthusiast", "Problem Solver", "Tech Creator"];
+let i = 0;
+let timer;
+
+function typingEffect() {
+  let word = words[i].split("");
+  var loopTyping = function() {
+    if (word.length > 0) {
+      document.getElementById('typed').innerHTML += word.shift();
+    } else {
+      setTimeout(deletingEffect, 2000);
+      return;
+    }
+    timer = setTimeout(loopTyping, 100);
+  };
+  loopTyping();
+}
+
+function deletingEffect() {
+  let word = words[i].split("");
+  var loopDeleting = function() {
+    if (word.length > 0) {
+      word.pop();
+      document.getElementById('typed').innerHTML = word.join("");
+    } else {
+      if (words.length > (i + 1)) {
+        i++;
+      } else {
+        i = 0;
+      }
+      setTimeout(typingEffect, 500);
+      return;
+    }
+    timer = setTimeout(loopDeleting, 50);
+  };
+  loopDeleting();
+}
+
+typingEffect();
+</script>
 
 </body>
 </html>
